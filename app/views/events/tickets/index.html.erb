@@ -1,0 +1,52 @@
+<h1>My Tickets</h1>
+
+<%= render 'shared/notice' %>
+
+  <% if @user_bookings.any? %>
+    <table class="ticket-table">
+      <thead>
+        <tr>
+          <th>Event Name</th>
+          <th>Event Date</th>
+          <th>Tickets Booked</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <% @user_bookings.each do |booking| %>
+          <tr>
+            <td><%= booking.event.name %></td>
+            <td><%= booking.event.event_at.strftime("%B %d, %Y") %></td>
+            <td><%= booking.quantity %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>No tickets found.</p>
+  <% end %>
+
+  <style>
+    .ticket-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .ticket-table th,
+    .ticket-table td {
+      border: 1px solid #ccc;
+      padding: 8px;
+    }
+
+    .ticket-table th {
+      background-color: #f2f2f2;
+    }
+
+    .ticket-table tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .ticket-table tbody tr:hover {
+      background-color: #e1e1e1;
+    }
+  </style>

@@ -1,0 +1,22 @@
+<h1>Book Tickets</h1>
+
+<%= form_with(model: [@event, @ticket], url: events_event_tickets_path(@event), method: :post, class: 'row g-3') do |form| %>
+  <div class="col-md-6">
+    <%= form.label :quantity, 'Number of Tickets', class: 'form-label' %>
+    <%= form.number_field :quantity, class: 'form-control' %>
+    <% if @ticket.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <h2><%= pluralize(@ticket.errors.count, "error") %> prohibited this event from being saved:</h2>
+        <ul>
+          <% @ticket.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-md-6 d-flex align-items-end">
+    <%= form.submit 'Book Tickets', class: 'btn btn-primary' %>
+  </div>
+<% end %>

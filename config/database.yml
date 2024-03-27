@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: "<%= ENV.fetch('PG_HOST') %>"
+  min_messages: warning
+  password: "<%= ENV.fetch('PG_PASSWORD') %>"
+  pool: "<%= Integer(ENV.fetch('RAILS_MAX_THREADS', 5)) %>"
+  username: "<%= ENV.fetch('PG_USER') %>"
+
+development:
+  <<: *default
+  database: book_my_events_development
+
+test:
+  <<: *default
+  database: kbook_my_events_test
+
+production:
+  <<: *default
+  database: book_my_events
+  min_messages: warning
+  sslmode: require
+  timeout: 5000

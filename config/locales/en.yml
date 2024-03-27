@@ -1,0 +1,12 @@
+en:
+  activerecord:
+    errors:
+      models:
+        event/booking:
+          attributes:
+            quantity:
+              not_available: "Tickets are not available."
+        event:
+          attributes:
+            total_tickets:
+              not_available: "cannot be lesser than booked tickets."
